@@ -1,5 +1,7 @@
-
-////////// 1-10
+/* Name: Nora Coates
+* JS Problems 1-10
+*Completed Friday September 22nd, turned in Monday September 24th (Didn't read turn-ininstructions carefully enough)
+*/
 //1
 function sleep_in(weekday,vacation) {
     /*sleep_in determines whether or not we can sleep in
