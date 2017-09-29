@@ -1,28 +1,27 @@
-/* Name: Nora Coates
-* JS Problems 1-10
-*Completed Friday September 22nd, turned in Monday September 24th (Didn't read turn-ininstructions carefully enough)
-*/
+
+////////// 1-10
 //1
 function sleep_in(weekday,vacation) {
     /*sleep_in determines whether or not we can sleep in
      * We can if it's not a weekday, or if it is a holiday
      */
+    var result = false;
     if (weekday == false || vacation == true) {
-        return true;
-    } else {
-        return false;
+        result = true;
     }
+    return result;
 }
 //2
 function monkey_trouble(a_smile, b_smile) {
     /* monkey_trouble determines whether or not we are in trouble.
      * trouble occurs when both or neither monkeys are smiling.
      */
+    var result = false;
     if(a_smile == b_smile) {
-        return true;
-    } else {
-        return false;
+        result = true;
     }
+    return result;
+
 }
 //3
 function string_times(string, n) {
@@ -165,52 +164,26 @@ function loneSum(a, b, c) {
 //Here there be testers
 /////////// 1-10
 //1 FUNCTIONAL
-function tester_sleep_in() {
+function tester() {
     //tests sleep_in: FUNCTIONAL
-    document.getElementById("outputOne").innerHTML = sleep_in(true, false);
-}
-//2 FUNCTIONAL
-function tester_monkey_trouble() {
+    document.getElementById("outputOne").innerHTML = "sleep_in: " + sleep_in(true, false);
     //tests monkey_trouble: FUNCTIONAL
-    document.getElementById("outputTwo").innerHTML = monkey_trouble(true, false);
-}
-//3 FUNCTIONAL
-function tester_string_times() {
+    document.getElementById("outputTwo").innerHTML = "monkey_trouble: " +  monkey_trouble(true, false);
     //tests string_times: FUNCTIONAL
-    document.getElementById("outputThree").innerHTML = string_times('Super ', 6);
-}
-//4 FUNCTIONAL
-function tester_front_times() {
+    document.getElementById("outputThree").innerHTML ="string_times: " +  string_times('Super ', 6);
     //tests front_times: FUNCTIONAL
-    document.getElementById("outputFour").innerHTML = front_times("abcdefg", 9);
-}
-//5 FUNCTIONAL
-function tester_string_bits() {
+    document.getElementById("outputFour").innerHTML = "front_times: " + front_times("abcdefg", 9);
     //tests string_bits: FUNCTIONAL
-    document.getElementById("outputFive").innerHTML = string_bits("123456");
-}
-//6 FUNCTIONAL
-function tester_caughtSpeeding() {
+    document.getElementById("outputFive").innerHTML ="string_bits: " +  string_bits("123456");
     //tests caughtSpeeding
-    document.getElementById("outputSix").innerHTML = caughtSpeeding(85, true);
-}
-//7 FUNCTIONAL
-function tester_fizzBuzz() {
+    document.getElementById("outputSix").innerHTML ="caughtSpeeding: " +  caughtSpeeding(85, true);
     //tests fizzBuzz: FUNCTIONAL
-    document.getElementById("outputSeven").innerHTML = fizzBuzz(8);
-}
-//8 FUNCTIONAL
-function tester_teaParty() {
+    document.getElementById("outputSeven").innerHTML = "fizzBuzz: " + fizzBuzz(8);
     //tests teaParty: FUNCTIONAL
-    document.getElementById("outputEight").innerHTML = teaParty(3, 1);
-}
-//9 FUNCTIONAL
-function tester_blackjack() {
+    document.getElementById("outputEight").innerHTML = "teaParty: " + teaParty(3, 1);
     //tests blackjack
-    document.getElementById("outputNine").innerHTML = blackjack(22, 30);
-}
-//10 FUNCTIONAL
-function tester_loneSum() {
+    document.getElementById("outputNine").innerHTML = "blackjack: " + blackjack(22, 30);
     //tests loneSum
-    document.getElementById("outputTen").innerHTML = loneSum(3, 2, 2);
+    document.getElementById("outputTen").innerHTML = "loneSum: " + loneSum(3, 2, 2);
+
 }
