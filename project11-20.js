@@ -7,9 +7,10 @@ function firstlast6(array) {
     /* Given an array of length > 1
      * return true if either the first or last element is a 6
      */
+    console.log(array);
     var returnVal = false;
     if(array.length >= 1) {
-        if(array[0] == 6 || array[array.length-1] == 6) {
+        if(array[0] === 6 || array[array.length-1] === 6) {
             returnVal = true;
         }
         return returnVal;
@@ -20,17 +21,13 @@ function has_23(array) {
     /*
      * Given an array of length 2, return true if the array contains a 2 or a 3
      */
-    var bool = 0;
     var returnVal = false;
-    if(array.length == 2) {
+    if(array.length === 2) {
         for (var i = 0; i< array.length; i++) {
-            if (array[i] == 2 || array[i] == 3) {
-                bool = 1;
+            if (array[i] === 2 || array[i] === 3) {
+                returnVal = true;
             }
         }
-    }
-    if (bool == 1) {
-        returnVal = true;
     }
     return returnVal;
 }
@@ -39,10 +36,10 @@ function fix_23(array) {
     /* given an int array of length 3, if there is a 2 element followed immediately by a 3,
      * set the 3 to 0. In any case, return the changed (or not) array
      */
-    if (array.length == 3) {
+    if (array.length === 3) {
         for(var i = 0; i < array.length; i++) {
-            if(array[i] == 2)
-                if(array[i+1] == 3) {
+            if(array[i] === 2)
+                if(array[i+1] === 3) {
                     array[i+1] = 0;
                 }
         }
@@ -56,8 +53,8 @@ function countYZ(string) {
      */
     var count = 0;
     for(var i = 0; i < string.length; i++) {
-        if (string[i] == "y" || string [i] == "z") {
-            if (string[i+1] == " ") {
+        if (string[i] === "y" || string [i] === "z") {
+            if (string[i+1] === " " || i === string.length-1) {
                 count ++;
             }
         }
@@ -81,7 +78,7 @@ function endOther(firstString, secondString) {
     }
     var len = str2.length;
     var gth = str1.length;
-    if(str1.substring(gth,gth-len) == str2) {
+    if(str1.substring(gth,gth-len) === str2) {
         returnVal = true;
     }
     return returnVal;
@@ -93,15 +90,20 @@ function starOut(string) {
      */
 
     var starCount = 0;
-    for(var x = 0; x < string.length-1; x++) {
-        if(string[x] == "*") {
+    var len = string.length-1;
+    for(var x = 0; x < len; x++) {
+        if(string[x] === "*") {
             //if this char is a star
-            if(string[x+1] == "*"){
-                starCount = 3 ;
+            if(string[x+1] === "*"){
+                starCount = 3;
             } else {
                 starCount = 2;
             }
             string = string.substring(0, x-1) + string.substring(x+starCount, string.length);
+            //resets length of string
+            len-=1;
+            //resets loop only if char is a star
+            x=0;
         }
 
     }
@@ -118,14 +120,14 @@ function getSandwich(string) {
         if(string.length<=5) {
             break;
         }
-        //if 'bread appears in the string
-        if(string.substring(x,x+5)=="bread") {
+        //if 'bread' appears in the string
+        if(string.substring(x,x+5)==="bread") {
             //set the second string equal to everything after bread
             sandwich += string.substring(x+5, string.length-1);
         }
     }
     for (var i = 0; i < sandwich.length; i++) {
-        if(sandwich.substring(i,i+5)=="bread") {
+        if(sandwich.substring(i,i+5)==="bread") {
             sandwich = sandwich.substring(0,i);
         }
     }
@@ -146,7 +148,7 @@ function canBalance(array) {
         sum1 += array.shift();
         x--
     }
-    if (sum1 % 2 == 0) {
+    if (sum1 % 2 === 0) {
         result = true;
     }
 
@@ -163,9 +165,9 @@ function countClumps(array) {
 
     for(var x = 0; x < array.length; x++) {
         //if this element is the same as the next one
-        if(array[x] == array [x+1]) {
+        if(array[x] === array [x+1]) {
             //if the element two spaces ahead is the same as the two before it
-            if(array[x+2] == array[x]) {
+            if(array[x+2] === array[x]) {
                 //subtract one from clumps, because in the next step
                 clumps -= 1;
             }
@@ -205,7 +207,7 @@ function evenlySpaced(lil, mid, big) {
     }
 
    //if the last # minus the second is the same as the 2nd minus the 1st
-    if(big-mid == mid-lil) {
+    if(big-mid === mid-lil) {
         //set the return value to true
         bears = true;
     }
@@ -223,13 +225,13 @@ function tester() {
     //tests fix_23 FUNCTIONAL
     document.getElementById("outputThree").innerHTML = "fix_23: " +fix_23([0, 2, 3]);
     //tests countYZ FUNCTIONAL
-    document.getElementById("outputFour").innerHTML = "countYZ: " + countYZ("z yo oy ");
+    document.getElementById("outputFour").innerHTML = "countYZ: " + countYZ("yellow ez by you");
     //tests endOther FUNCTIONAL
     document.getElementById("outputFive").innerHTML = "endOther: " + endOther("Loo", "o");
     //tests starOut FUNCTIONAL
-    document.getElementById("outputSix").innerHTML = "starOut: " + starOut("Beee**ssknn**eees");
+    document.getElementById("outputSix").innerHTML = "starOut: " + starOut("12**34*56");
     //tests getSandwich FUNCTIONAL
-    document.getElementById("outputSeven").innerHTML = "getSandwich: " + getSandwich("breadjammbready");
+    document.getElementById("outputSeven").innerHTML = "getSandwich: " + getSandwich("zzbreadjammbready");
     //tests canBalance FUNCTIONAL
     document.getElementById("outputEight").innerHTML = "canBalance: " + canBalance([2, 2, 2, 2]);
     //tests countClumps FUNCTIONAL
