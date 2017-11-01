@@ -109,29 +109,28 @@ function starOut(string) {
     }
     return string;
 }
-//17
+//17 NONFUNCTIONAL
 function getSandwich(string) {
     /* returns anything in this string between instances of 'bread'
     * if there are fewer than two instances of bread
     * return empty string
      */
     var sandwich = "";
-    var length = string.length-1;
-    for(var x = 0; x<length; x++) {
+    var length = string.length;
+    for(var x = 0; x<length-1; x++) {
         if(string.length<=5) {
             break;
         }
         //if 'bread' appears in the string
         if(string.substring(x,x+5)==="bread") {
-            //set the second string equal to everything after bread
-            sandwich += string.substring(x+5, string.length-1);
+            //set the second string equal to everything after the first bread
+            sandwich += string.substring(x+5, string.length);
+            x += length;
         }
-        length = sandwich.length-1;
     }
-    for (var i = 0; i < sandwich.length; i++) {
+    for (var i = 0; i < sandwich.length-1; i++) {
         if(sandwich.substring(i,i+5)==="bread") {
             sandwich = sandwich.substring(0,i);
-            length = sandwich.length;
         }
     }
     return sandwich;
