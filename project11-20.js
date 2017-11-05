@@ -52,6 +52,7 @@ function countYZ(string) {
      * given a string, count the number of times a y or z is followed by a space
      */
     var count = 0;
+    string = string.toLowerCase();
     for(var i = 0; i < string.length; i++) {
         if (string[i] === "y" || string [i] === "z") {
             if (string[i+1] === " " || i === string.length-1) {
@@ -89,23 +90,24 @@ function starOut(string) {
      * or the characters immediately next to the stars
      */
 
-    var starCount = 0;
-    var len = string.length-1;
-    for(var x = 0; x < len; x++) {
+    var starCount = 1;
+    for(var x = 0; x < string.length-1; x++) {
         if(string[x] === "*") {
             //if this char is a star
-            if(string[x+1] === "*"){
-                starCount = 3;
-            } else {
-                starCount = 2;
+            for(var z = x; z < string.length-1; z++) {
+                if(string[z] === "*") {
+                    starCount +=1;
+                } else {
+                    z += string.length;
+                }
             }
             string = string.substring(0, x-1) + string.substring(x+starCount, string.length);
-            //resets length of string
-            len-=1;
             //resets loop only if char is a star
             x=0;
         }
-
+    }
+    if (string[string.length-1] === "*") {
+        string = string.substring(0, string.length-2);
     }
     return string;
 }
